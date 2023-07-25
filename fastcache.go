@@ -11,7 +11,7 @@ import (
 	xxhash "github.com/cespare/xxhash/v2"
 )
 
-const bucketsCount = 512
+const bucketsCount = 1024
 
 const chunkSize = 64 * 1024
 
