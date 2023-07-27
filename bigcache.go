@@ -1,11 +1,9 @@
 package fastcache
 
 import (
+	xxhash "github.com/cespare/xxhash/v2"
 	"sync"
 	"sync/atomic"
-	"time"
-
-	xxhash "github.com/cespare/xxhash/v2"
 )
 
 // maxSubvalueLen is the maximum size of subvalue chunk.
@@ -57,7 +55,6 @@ func (c *Cache) SetBig(k, v []byte) {
 		subvalue := v[:subvalueLen]
 		v = v[subvalueLen:]
 		c.Set(subkey.B, subvalue)
-		time.Sleep(10 * time.Millisecond)
 	}
 
 	// Write metavalue, which consists of valueHash and valueLen.
